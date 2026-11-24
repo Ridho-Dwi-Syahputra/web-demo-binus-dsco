@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Demo DSCO untuk melihat sinyal belajar dan menentukan tindak lanjut tutor.">
+  <title>Ruang Tutor | Demo DSCO</title>
+  <link rel="preload" href="/assets/plus-jakarta-sans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body id="atas">
+  <a class="skip-link" href="#konten">Lewati ke isi</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Navigasi utama">
+      <a class="brand" href="#atas"><span class="brand-mark" aria-hidden="true"></span>Ruang Tutor</a>
+      <div class="nav-links">
+        <a href="#cara-kerja">Cara kerja</a>
+        <a href="#tentang-model">Tentang model</a>
+      </div>
+      <a class="button button-primary nav-cta" href="#demo">Coba demo</a>
+    </nav>
+  </header>
+
+  <main id="konten">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Kenali mahasiswa yang perlu <span>ditindaklanjuti</span></h1>
+        <p>Gunakan sinyal aktivitas belajar dan asesmen awal untuk membantu tutor menentukan siapa yang perlu dihubungi dan bantuan apa yang bisa ditawarkan.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#demo">Coba demo interaktif <span aria-hidden="true">→</span></a>
+          <a class="button button-outline" href="#cara-kerja">Lihat cara kerja</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-large"></div>
+        <div class="orbit orbit-small"></div>
+        <div class="spark spark-top">✦</div>
+        <div class="spark spark-bottom">✧</div>
+        <div class="illustration">
+          <div class="illustration-top">
+            <span class="illustration-dots"><i></i><i></i><i></i></span>
+            <span>Catatan tutor</span>
+          </div>
+          <div class="illustration-body">
+            <div class="art-heading">
+              <span>Minggu awal</span>
+              <strong>Ringkasan belajar</strong>
+            </div>
+            <div class="art-grid">
+              <div class="art-signal art-blue">
+                <div class="art-icon art-chart"><i></i><i></i><i></i></div>
+                <span>Aktivitas VLE</span>
+                <strong>7 hari aktif</strong>
+              </div>
+              <div class="art-signal art-yellow">
+                <div class="art-icon art-sheet"><i></i></div>
+                <span>Asesmen awal</span>
+                <strong>Tenggat terlewat</strong>
+              </div>
+            </div>
+            <div class="art-action">
+              <span class="art-tick">✓</span>
+              <div><small>Saran tindakan</small><strong>Hubungi mahasiswa</strong></div>
+              <span class="art-arrow">↗</span>
+            </div>
+          </div>
+          <span class="art-tag tag-top">Sinyal belajar</span>
+          <span class="art-tag tag-bottom">Tindak lanjut tutor</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="demo" aria-labelledby="demo-title" tabindex="-1">
+      <div class="shell">
+        <div class="section-heading">
+          <h2 id="demo-title">Coba analisis <span class="text-green">satu contoh</span></h2>
+          <p>Pilih contoh dari data uji DSCO yang sudah diproses, lalu lihat skor model dan saran tindak lanjutnya.</p>
+        </div>
+
+        <div class="demo-window">
+          <div class="window-top">
+            <span class="illustration-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>Demo Ruang Tutor</span>
+          </div>
+          <div class="demo-grid">
+            <form id="case-form" class="case-panel">
+              <fieldset id="cases">
+                <legend>Pilih contoh mahasiswa</legend>
+                <div class="choices">
+                  <label class="choice">
+                    <input type="radio" name="case_id" value="belum-aktif">
+                    <span class="choice-label">Belum aktif di VLE</span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="case_id" value="asesmen-terlewat" checked>
+                    <span class="choice-label">Asesmen terlewat</span>
+                  </label>
+                  <label class="choice">
+                    <input type="radio" name="case_id" value="aktivitas-tercatat">
+                    <span class="choice-label">Aktivitas tercatat</span>
+                  </label>
+                </div>
+              </fieldset>
+              <p class="case-loading" id="case-loading" role="status">Menyiapkan data contoh…</p>
+              <dl class="signals" id="signals" aria-label="Sinyal akademik contoh" hidden>
+                <div><dt>Modul</dt><dd id="signal-module"></dd></div>
+                <div><dt>Hari aktif di VLE</dt><dd id="signal-activity"></dd></div>
+                <div><dt>Status asesmen</dt><dd id="signal-assessment"></dd></div>
+              </dl>
+              <button type="button" class="button button-outline" id="retry-setup" hidden>Muat ulang contoh</button>
+              <button type="submit" class="button button-primary analyze-button" id="analyze" disabled>Analisis contoh <span aria-hidden="true">→</span></button>
+              <noscript><p>Aktifkan JavaScript untuk menjalankan demo.</p></noscript>
+            </form>
+
+            <section class="result-panel" id="result-panel" aria-labelledby="result-title">
+              <h3 id="result-title">Hasil analisis</h3>
+              <p class="result-announcement" id="result-announcement" role="status" aria-atomic="true"></p>
+              <div class="result-placeholder" id="result-placeholder">
+                <span class="placeholder-icon" aria-hidden="true"></span>
+                <p>Jalankan analisis untuk melihat skor dan saran tindakan.</p>
+              </div>
+              <p class="result-loading" id="result-loading" hidden>Model sedang menganalisis contoh…</p>
+              <div id="result-error" class="result-error" hidden>
+                <p>Analisis belum bisa dijalankan. Coba lagi.</p>
+                <button type="button" class="button button-outline" id="retry-analysis">Coba lagi</button>
+              </div>
+              <div id="result" hidden>
+                <div class="result-score">
+                  <div><span class="score-label">Skor model</span><strong id="score"></strong></div>
+                  <span class="decision" id="decision"></span>
+                </div>
+                <meter id="score-meter" min="0" max="1" aria-label="Skor model"></meter>
+                <div class="recommendation">
+                  <span class="recommendation-label">Saran tindak lanjut</span>
+                  <strong id="action-title"></strong>
+                  <p id="action-detail"></p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section shell" id="cara-kerja" aria-labelledby="how-title">
+      <div class="section-heading">
+        <h2 id="how-title">Dari sinyal ke tindakan</h2>
+      </div>
+      <ol class="steps">
+        <li class="step step-blue"><div><h3>Baca sinyal</h3><p>Lihat aktivitas di VLE dan status pengumpulan asesmen.</p></div></li>
+        <li class="step step-yellow"><div><h3>Analisis contoh</h3><p>Ukur skor model untuk membantu menyusun prioritas pendampingan.</p></div></li>
+        <li class="step step-mint"><div><h3>Tentukan langkah</h3><p>Tutor meninjau situasi sebelum memilih bantuan yang sesuai.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="model-section shell" id="tentang-model" aria-labelledby="model-title">
+      <div class="model-copy">
+        <h2 id="model-title">Tentang model kompetisi</h2>
+        <p>Skor dihitung dari gabungan LightGBM, XGBoost, dan CatBoost menggunakan data DSCO terproses. Sebagian fitur model melihat periode berikutnya, sehingga demo ini menggunakan contoh retrospektif.</p>
+      </div>
+      <div class="model-signature">
+        <strong>DSCO BINUS 2026</strong>
+        <span>Tim kepepet deadline</span>
+        <span>Universitas Andalas</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

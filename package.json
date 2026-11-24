@@ -1,0 +1,20 @@
+{
+  "name": "ruang-tutor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1 --port 8787",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1 --port 8787"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-select": "2.4.1",
+    "csv-parse": "7.0.3",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}
